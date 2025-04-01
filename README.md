@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://github.com/user-attachments/assets/5de22ea0-0d6c-47ac-b0e2-81eed3992388" alt="DNS logo"/>
+</p>
+
 <h1>DNS Lab</h1>
 DNS (Domain naming server/system) converts computer names and website names that humans understand into binary code that is understood by computers to locate resources. DNS is often integrated with Active Directory. (If you have been following my Active Directory repositories, you'll know that we chose to automatically install DNS when we installed Active Directory Domain Server, turning dc-1 into a domain controller. So we already have a DNS server both installed and running on our domain controller dc-1).
 <p></p>
