@@ -1,14 +1,19 @@
 <h1>DNS Lab</h1>
-
- ### [YouTube Demonstration- coming soon]
- 
-<h2>Description</h2>
 DNS (Domain naming server/system) converts computer names and website names that humans understand into binary code that is understood by computers to locate resources. DNS is often integrated with Active Directory. (If you have been following my Active Directory repositories, you'll know that we chose to automatically install DNS when we installed Active Directory Domain Server, turning dc-1 into a domain controller. So we already have a DNS server both installed and running on our domain controller dc-1).
 <p></p>
 In this lab, we will use dc-1 and client-1 that was created in the active directory lab, to gain DNS familiarity using ping, A records, and CNAME).
 
 <br />
 
+<h2>Video Demonstration</h2>
+
+- ### [YouTube Demonstration DNS- coming soon](https://www.youtube.com)
+
+<h2>Environments Used </h2>
+
+- <b>Windows 10</b> (21H2)
+- Microsoft Azure (Virtual Machines/Compute)
+- Remote Desktop
 
 <h2>Requirements</h2>
 
@@ -27,11 +32,7 @@ In this lab, we will use dc-1 and client-1 that was created in the active direct
 - <b>Active Directory Users and Computers</b>
 - <b>DNS</b>
 
-<h2>Environments Used </h2>
-
-- <b>Windows 10</b> (21H2)
-
-<h2>Outline:</h2>
+<h2>Objectives:</h2>
 
 - A. Inspect DNS A-records on the server (hostname to IP address mappings)
 - B. Create some of our own A-Records on the server and observe them from the client
@@ -48,7 +49,7 @@ Again, our DNS server in this lab is dc-1. So dc-1 will check its record for "ma
 If you later update the mainframe A record in the DNS server to point to a different IP address (such as 8.8.8.8), client-1 still has its previous IP address in the cache (10.0.0.4.) Pinging mainframe now would attempt to ping the previously mapped IP address even though the main record has changed. To resolve this, run ipconfig /flushdns on client-1 to clear the local cache. This will cause ping will go out over the network to query the DNS server again. 
 <P>
  
-<h2>Program walk-through:</h2>
+<h2>Objectives Tutorial:</h2>
 
  <p>
  <br />
