@@ -5,7 +5,7 @@
 <h2>Description</h2>
 DNS (Domain naming server/system) converts computer names and website names that humans understand into binary code that is understood by computers to locate resources. DNS is often integrated with Active Directory. (If you have been following my Active Directory repositories, you'll know that we chose to automatically install DNS when we installed Active Directory Domain Server, turning dc-1 into a domain controller. So we already have a DNS server both installed and running on our domain controller dc-1).
 <p></p>
-In this lab, we will use dc-1 and client-1 that was created in the active directory lab, to gain DNS familiarity.
+In this lab, we will use dc-1 and client-1 that was created in the active directory lab, to gain DNS familiarity using ping, A records, and CNAME).
 
 <br />
 
@@ -36,16 +36,9 @@ In this lab, we will use dc-1 and client-1 that was created in the active direct
 - A. Inspect DNS A-records on the server (hostname to IP address mappings)
 - B. Create some of our own A-Records on the server and observe them from the client
 - C. Delete records from the server and observe the client DNS cache on the client to gain understanding
-- D. Create a "CNMAE" record (Mapping one human readable name to another)
+- D. Create a "CNAME" record (Mapping one human readable name to another)
 - E. Discuss Root Hints
 
-
-<h2>Program walk-through:</h2>
-
-<p align="center">
-
-<img src="https://github.com/user-attachments/assets/30f43066-78a7-448f-9a22-eef5090994a6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<p>
 Overview: 
 <p> 
  Our dc-1 domain controller also serves as a DNS server with A records mapping hostnames to IPs. Existing records include dc-1.mydomain.com (10.0.0.4) and client-1.mydomain.com (10.0.0.5), created automatically. When client-1 pings a hostname (e.g., "mainframe"), it checks its cache first, followed by the host file, and finally the DNS server. Client-1 first checks its local cache (stored in memory) for prior interactions with this computer, as it's the quickest method. If there's no result in the cache, it consults the host file (domain name to IP address mappings; local to the computer). If that fails, it queries the DNS server over the network for the IP of "mainframe.com."
@@ -54,7 +47,8 @@ Again, our DNS server in this lab is dc-1. So dc-1 will check its record for "ma
 <P>
 If you later update the mainframe A record in the DNS server to point to a different IP address (such as 8.8.8.8), client-1 still has its previous IP address in the cache (10.0.0.4.) Pinging mainframe now would attempt to ping the previously mapped IP address even though the main record has changed. To resolve this, run ipconfig /flushdns on client-1 to clear the local cache. This will cause ping will go out over the network to query the DNS server again. 
 <P>
-
+ 
+<h2>Program walk-through:</h2>
 
  <p>
  <br />
@@ -91,7 +85,7 @@ If you later update the mainframe A record in the DNS server to point to a diffe
 
   1. In dc-1 change the A record to point to 8.8.8.8. instead of 10.0.0.4. Doubleclick the mainframe record you made and change the IP address. In client-1 powershell ping mainframe again. You'll notice it outputs the old IP address because that is what has been saved in the cache, which is first looked to. even typing ipconfig /displaydns will display the old IP in this local DNS cache. So we will flush the cache and observe it as empty. oppen powershell, running it as an admin and type ipconfig /flushdns to flush it and then use ipconfig /displaydns to observe that. so now pinging mainframe will get the new IP address 8.8.8.8. flushdns is helpful especially if only one person cannott access a resource when others can.
 </p>
-- D. Create a "CNMAE" record (Mapping one human readable name to another)
+- D. Create a "CNAME" record (Mapping one human readable name to another)
 <p>
 
 <img src="https://github.com/user-attachments/assets/e504b551-bbdb-4f92-b208-ae1102264cfb" height="80%" width="80%" alt="Disk Sanitization Steps"/>
