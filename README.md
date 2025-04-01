@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/user-attachments/assets/5de22ea0-0d6c-47ac-b0e2-81eed3992388" alt="DNS logo"/>
+<img src="https://github.com/user-attachments/assets/5de22ea0-0d6c-47ac-b0e2-81eed3992388" height="60%" width="40%" alt="DNS logo"/>
 </p>
 
 <h1>DNS Lab</h1>
@@ -59,7 +59,7 @@ If you later update the mainframe A record in the DNS server to point to a diffe
  <br />
 - A. Inspect DNS A-records on the server (hostname to IP address mappings)
 <p>
-<img src="https://github.com/user-attachments/assets/412f0e44-cf11-4ae9-87e0-3cf97abe8377" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://github.com/user-attachments/assets/412f0e44-cf11-4ae9-87e0-3cf97abe8377" height="80%" width="80%"/>
 <img src="https://github.com/user-attachments/assets/85712f86-a29f-4b3e-9767-bef7c3f8951d" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p></p>
 
