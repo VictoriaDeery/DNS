@@ -1,11 +1,11 @@
 <h1>DNS Lab</h1>
 
- ### [YouTube Demonstration-available upon request]
+ ### [YouTube Demonstration- coming soon]
  
 <h2>Description</h2>
-DNS (Domain naming server/system) converts computer names and website names that humans understand, into binary code that is understood by computers to locate resources. DNS is often integrated with Active Directory (If you have been following my Active Directory repositories, you'll know that we chose to automatically install DNS when we installed Active Directory turning dc-1 into a domain controller. So we already have a DNS server both installed and running on our domain controller dc-1).
+DNS (Domain naming server/system) converts computer names and website names that humans understand into binary code that is understood by computers to locate resources. DNS is often integrated with Active Directory. (If you have been following my Active Directory repositories, you'll know that we chose to automatically install DNS when we installed Active Directory Domain Server, turning dc-1 into a domain controller. So we already have a DNS server both installed and running on our domain controller dc-1).
 <p></p>
-In this lab we will use dc-1 and client-1 that was created in the active directory lab, to gain DNS familiarity.
+In this lab, we will use dc-1 and client-1 that was created in the active directory lab, to gain DNS familiarity.
 
 <br />
 
@@ -14,7 +14,7 @@ In this lab we will use dc-1 and client-1 that was created in the active directo
 
 - <b>Active Directory must be running in Azure on VM dc-1</b> 
 - <b>A client virtual machine must be running in Azure (client-1) and joined to the domain</b>
-- <b>Both of these requirements have step by step details in my repositories:
+- <b>Both of these requirements have step-by-step details in my repositories:
   - [Active Directory Set Up](https://github.com/VictoriaDeery/ActiveDirectorySetUp/blob/main/README.md)
   - [Active Directory Functionality](https://github.com/VictoriaDeery/ActiveDirectoryLab-pt2/blob/main/README.md)
 
@@ -46,9 +46,16 @@ In this lab we will use dc-1 and client-1 that was created in the active directo
 
 <img src="https://github.com/user-attachments/assets/30f43066-78a7-448f-9a22-eef5090994a6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
-Overview: The domain controller also has a DNS server on it.  Its existing A records on it are dc-1.mydomain.com (10.0.0.4) and client-1.mydomain.com (10.0.0.5). These A records were automatically created. In the command prompt of client-1 if you try to ping anything, for example ping "mainframe," or any word you want, first client-1 will check its local cache (stored in memory) to see if its interacted with this computer before, as using cache is the fastest method. If there's no result in cache, the second place it looks is the host file, which is a file local to the computer that has a domain name to IP address mappings. If there is still no result, then it will reach out over the network to ask the DNS server who has mainframe.com. Again our DNS server in this lab is dc-1. dc-1 will check its record for mainframe and if it doesn't have it then the ping will fail and mainframe host will not be located. So we can create an A record on our DNS server for mainframe host (mainframe.mydomain.com) and then we can map it to any IP address. Then if re-pinged, it will be successful, not from the cache or hostfile but from the DNS server which will return the IP address to client-1; and then client-1 will ping the IP address and then it will give you a success message if the host IP is online and pingable. AT tis point, now client-1 can store this IP address in the local cache. So now if you wait a few minutes and change the mainfrome A record in the DNS server to point to a different IP address (8.8.8.8), client-1 still has its previous IP address in the cache so ping mainframe will attempt to ping the previously mapped IP address even though the main record has changed. So client-1 can run ipconfig /flushdns to wipe the local cache immediately, and so the ping will go out over the network to ask the DNS server as it had before. And then root hints: since our domain controller, doubles as a DNS server, it is responsible for resolving all requests from the network, ie:knowing google's IP address. So if the local serverdoesn't know where to resolve a top level domain, it uses root hints which is automatically installed when a domain controller is installed and opts to install DNS. Root Hints is a network of hundreds of servers around the world.
-  
-  (an A record maps a hostname to an IP address) 
+Overview: 
+<p>
+Our dc-1 domain controller also has a DNS server on it with A records that map a hostname to an IP address. Its existing A records are dc-1.mydomain.com (10.0.0.4) and client-1.mydomain.com (10.0.0.5). These A records were automatically created. In the command prompt of client-1, if you try to ping anything, for example, ping "mainframe," or any word you want, first, client-1 will check its cache, then the host file, and lastly the DNS Server. So first, client-1 would check its local cache (stored in memory) to see if it has interacted with this computer before, because using the cache is the fastest method. If there's no result in the cache, the second place it looks is the host file, which is a file local to the computer that has domain name to IP address mappings. If there is still no result, then it will reach out over the network to ask the DNS server who has mainframe.com. 
+<P>
+Again, our DNS server in this lab is dc-1. So dc-1 will check its record for "mainframe" and if it doesn't have it, then the ping will fail, and mainframe host will not be located. So, we can create an A record on our DNS server for mainframe host (mainframe.mydomain.com), and then map it to any IP address (even 10.0.0.4). Then, if re-pinged, it will be successful, not from the cache nor hostfile but from the configured DNS server which will return the IP address to client-1. With client-1 we will ping the IP address that we have mapped to mainframe, and then it will give you a success message if the host IP is online and pingable. AT this point, now client-1 can store this IP address in the local cache. 
+<P>
+Now if you wait a few minutes and change the mainframe A record in the DNS server to point to a different IP address (such as 8.8.8.8), client-1 still has its previous IP address in the cache (10.0.0.4.) So if you ping mainframe, it will attempt to ping the previously mapped IP address even though the main record has changed. To resolve this, client-1 can run ipconfig /flushdns to wipe the local cache immediately. This will cause ping will go out over the network to ask the DNS server as it had before. 
+<P>
+And lastly,  root hints: Root Hints is a network of hundreds of servers around the world. Since our domain controller doubles as a DNS server, it is responsible for resolving all requests from the network, such as knowing google's IP address. However, if the local server doesn't know where to resolve a top-level domain, then it uses root hints, which is automatically installed when a domain controller is installed and opts to install DNS. 
+
  <p>
  <br />
 - A. Inspect DNS A-records on the server (hostname to IP address mappings)
