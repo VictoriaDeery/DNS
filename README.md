@@ -13,8 +13,10 @@ In this lab we will use dc-1 and client-1 that was created in the active directo
 <h2>Requirements</h2>
 
 - <b>Active Directory must be running in Azure on VM dc-1</b> 
-- <b>a client virtual machine must be running in Azure (client-1) and joined to the domain</b>
-- <b> both of these requirements have step by step details in my repository ActiveLabDirectory<b/>
+- <b>A client virtual machine must be running in Azure (client-1) and joined to the domain</b>
+- <b>Both of these requirements have step by step details in my repositories:
+  - [Active Directory Set Up](https://github.com/VictoriaDeery/ActiveDirectorySetUp/blob/main/README.md)
+  - [Active Directory Functionality](https://github.com/VictoriaDeery/ActiveDirectoryLab-pt2/blob/main/README.md)
 
 <h2>Languages and Utilities Used</h2>
 
