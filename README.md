@@ -54,7 +54,7 @@ Again, our DNS server in this lab is dc-1. So dc-1 will check its record for "ma
 <P>
 If you later update the mainframe A record in the DNS server to point to a different IP address (such as 8.8.8.8), client-1 still has its previous IP address in the cache (10.0.0.4.) Pinging mainframe now would attempt to ping the previously mapped IP address even though the main record has changed. To resolve this, run ipconfig /flushdns on client-1 to clear the local cache. This will cause ping will go out over the network to query the DNS server again. 
 <P>
-And lastly,  root hints are a network of hundreds of servers and is automatically installed when a domain controller is installed and opts to install DNS. Since our domain controller doubles as a DNS server, it is responsible for resolving all requests from the network, such as knowing google's IP address. However, if the local server doesn't know where to resolve a top-level domain, then it uses root hints.
+
 
  <p>
  <br />
@@ -98,9 +98,9 @@ And lastly,  root hints are a network of hundreds of servers and is automaticall
   <p>
 <img src="https://github.com/user-attachments/assets/c0d6a829-ee35-46a5-bbee-1f622f279505" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
-  In dc-1, map "search" to "www.google.com" as the fully qualified domain name (FQDN). In the DNS server, rightclick in our domain like before (under mainframe) -> new alias (CNAME). Now in client-1 ping search. since the name doesnt match the certificate of google.com, searching "search" won't work.
+  In dc-1, map "search" to "www.google.com" as the fully qualified domain name (FQDN). In the DNS server, right-click in our domain like before (under mainframe) -> new alias (CNAME). Now in client-1 ping search. Since the name doesn't match the certificate of google.com, searching "search" won't work.
 </p>
 - E. Discuss Root Hints
-Review overview.
-
+<P>
+Lastly,  root hints are a network of hundreds of servers that is automatically installed when a domain controller is installed and opts to install DNS. Since our domain controller doubles as a DNS server, it is responsible for resolving all requests from the network, such as knowing Google's IP address. However, if the local server doesn't know where to resolve a top-level domain, then it uses root hints.
 </p>
