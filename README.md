@@ -1,5 +1,5 @@
-<p align="center">
-<img src="https://github.com/user-attachments/assets/5de22ea0-0d6c-47ac-b0e2-81eed3992388" height="10%" width="40%" alt="DNS logo"/>
+<p align="center" height="30%" width="30%">
+<img width="350" alt="image" src="https://github.com/user-attachments/assets/5de22ea0-0d6c-47ac-b0e2-81eed3992388" alt="DNS LOGO"/>
 </p>
 
 <h1>DNS Lab</h1>
