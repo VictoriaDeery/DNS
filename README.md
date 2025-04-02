@@ -1,5 +1,5 @@
 <p align="center" height="30%" width="30%">
-<img width="350" alt="image" src="https://github.com/user-attachments/assets/5de22ea0-0d6c-47ac-b0e2-81eed3992388" alt="DNS LOGO"/>
+<img width="325" alt="image" src="https://github.com/user-attachments/assets/5de22ea0-0d6c-47ac-b0e2-81eed3992388" alt="DNS LOGO"/>
 </p>
 
 <h1>DNS Lab</h1>
@@ -16,15 +16,14 @@ In this lab, we will gain DNS familiarity using ping, A-Records, and CNAME using
 <h2>Environments Used </h2>
 
 - Windows 10 (21H2)
+- Windows Server
 - Microsoft Azure (Virtual Machines/Compute)
 - Active Directory
-
+- Active Directory Users and Computers
+- 
 <h2>Languages and Utilities Used</h2>
 
 - PowerShell
-- Azure
-- Active Directory
-- Active Directory Users and Computers
 - DNS-specific tools
 - Remote Desktop
 
