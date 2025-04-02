@@ -15,27 +15,27 @@ In this lab, we will gain DNS familiarity using ping, A-Records, and CNAME using
 
 <h2>Environments Used </h2>
 
-- <b>Windows 10</b> (21H2)
+- Windows 10 (21H2)
 - Microsoft Azure (Virtual Machines/Compute)
+- Active Directory
+
+<h2>Languages and Utilities Used</h2>
+
+- PowerShell
+- Azure
+- Active Directory
+- Active Directory Users and Computers
+- DNS-specific tools
 - Remote Desktop
 
 <h2>Requirements</h2>
 
-- <b>Active Directory must be running in Azure on VM dc-1</b> 
-- <b>A client virtual machine must be running in Azure (client-1) and joined to the domain</b>
-- <b>Both of these requirements have step-by-step details in my repositories:
+- Active Directory must be running in Azure on VM dc-1
+- Client virtual machine must be running in Azure (client-1) and joined to the domain
+- Both of these requirements have step-by-step details in my repositories:
   - [Active Directory Set Up](https://github.com/VictoriaDeery/ActiveDirectorySetUp/blob/main/README.md)
   - [Active Directory Functionality](https://github.com/VictoriaDeery/ActiveDirectoryLab-pt2/blob/main/README.md)
-
-<h2>Languages and Utilities Used</h2>
-
-- <b>PowerShell</b> 
-- <b>Azure</b>
-- <b>Active Directory</b>
-- <b>remote desktop</b>
-- <b>Active Directory Users and Computers</b>
-- <b>DNS</b>
-
+    
 <h2>Objectives:</h2>
 
 - A. Inspect DNS A-records on the server (hostname to IP address mappings)
