@@ -57,7 +57,7 @@ If you later update the mainframe A record in the DNS server to point to a diffe
 
  <p>
  <br />
-- A. Inspect DNS A-records on the server (hostname to IP address mappings)
+- <b>A. Inspect DNS A-records on the server (hostname to IP address mappings)</b>
 <p>
 <img src="https://github.com/user-attachments/assets/412f0e44-cf11-4ae9-87e0-3cf97abe8377" height="80%" width="80%"/>
 <img src="https://github.com/user-attachments/assets/85712f86-a29f-4b3e-9767-bef7c3f8951d" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -65,8 +65,9 @@ If you later update the mainframe A record in the DNS server to point to a diffe
 
   A1. log into both dc-1 and client-1 as an admin like jane_admin. First use client-1. client-1 ->PowerShell -> ping mainframe. It will tell you it cannot be found. To see the local DNS cache type ipconfig /displaydns. If you want the cache to be in a text file called test, type ipconfig /displaydns > test.txt and hit enter to run. To open it, type notepad test.txt. Here, you can do control+F and confirm there is no mainframe here. Now to view the local host file, open notepad as an admin ->file -> open -> change file type to all files -> windows -> systemm32 ->drivers -> etc -> hosts to view the local hostfile which is where you can map IP addresses to hostname, for example if you want to assign unicorn to the local loopback address 127.0.0.1 then ping will find it in the hostfile. Even typing nslookup mainframe, would not find it at this point because there is no DNS record. So, let's create a DNS A record on dc-1 for "mainframe" and have it point to dc-1's private IP address.
 </p>
-- B. Create and test A-Records on the server and observe them from the client
+- <b>B. Create and test A-Records on the server and observe them from the client</b>
 <p>
+  <p></p>
 <img src="https://github.com/user-attachments/assets/8f1a01e0-9e82-4464-b172-e60499745723" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
   B1. We will create an A-Record on the server and then observe them from the client. Now use dc-1. Get and copy dc-1's private IP address either from Azure or in dc-1 PowerShell type ipconfig and it will tell you. click the windows symbol -> administrative tools -> DNS to open the DNS server ->dc-1 -> forward lookup zones -> mydomain.com. click mydomain.com to see different records. Right-click in the records space -> new host (A or AAAA) -> set the name and IP Address as in the picture above (mainframe & dc-1's private IP). It is possible to have two records pointing to the same IP address.
@@ -78,9 +79,9 @@ If you later update the mainframe A record in the DNS server to point to a diffe
     B2. Go back to being on client-1 PowerShell and ping mainframe successfully via the DNS server.
   </p>
 </p>
-- C. Manage DNS A-Records and Cache 
+- <b>C. Manage DNS A-Records and Cache </b>
 <p>
-
+  <p></p>
 <img src="https://github.com/user-attachments/assets/c1b51ca2-ff44-493b-aeaf-be72242bb27c" height="80%" width="80%" alt="Disk Sanitization Steps"/>
   <p>
 <img src="https://github.com/user-attachments/assets/228291c7-6d6b-4749-a0fd-f684713739ab" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -89,17 +90,18 @@ If you later update the mainframe A record in the DNS server to point to a diffe
 
   C1. Now we will delete records from the server and observe the client DNS cache on the client to gain insight. In dc-1 change the A record to point to 8.8.8.8. instead of 10.0.0.4. Double-click the mainframe record you made and change the IP address. In client-1, PowerShell ping mainframe again. You'll notice it outputs the old IP address because that is what has been saved in the cache, which is first looked to. even typing ipconfig /displaydns will display the old IP in this local DNS cache. So, we will flush the cache and observe it as empty. Open PowerShell, run it as an admin, and type ipconfig /flushdns to flush it, and then use ipconfig /displaydns to observe that. So now, pinging mainframe will get the new IP address 8.8.8.8. Flushdns is helpful, especially if only one person cannot access a resource when others can.
 </p>
-- D. Create a "CNAME" record (Mapping one human readable name to another)
+- <b>D. Create a "CNAME" record (Mapping one human readable name to another)</b>
 <p>
-
+  <p></p>
 <img src="https://github.com/user-attachments/assets/e504b551-bbdb-4f92-b208-ae1102264cfb" height="80%" width="80%" alt="Disk Sanitization Steps"/>
   <p>
 <img src="https://github.com/user-attachments/assets/c0d6a829-ee35-46a5-bbee-1f622f279505" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
   D1. In dc-1, map "search" to "www.google.com" as the fully qualified domain name (FQDN). In the DNS server, right-click in our domain like before (under mainframe) -> new alias (CNAME). Now in client-1 ping search. Since the name doesn't match the certificate of google.com, searching "search" won't work.
 </p>
-- E. Explore Root Hints
-<P>
+- <b>E. Explore Root Hints</b>
+<p>
+  <p></p>
   E1. Lastly,  root hints are a network of hundreds of servers that is automatically installed when a domain controller is installed and opts to install DNS. Since our domain controller doubles as a DNS server, it is responsible for resolving all requests from the network, such as knowing Google's IP address. However, if the local server doesn't know where to resolve a top-level domain, then it uses root hints.
 </p>
 <h2>Next Steps</h2>
