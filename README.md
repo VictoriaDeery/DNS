@@ -43,7 +43,7 @@ In this lab, we will gain DNS familiarity using ping, A-Records, and CNAME using
 - D. Create a "CNAME" record (Mapping one human readable name to another)
 - E. Explore Root Hints
 
-<h2>Overview: :</h2>
+<h2>Overview:</h2>
 <p> 
  Our dc-1 domain controller also serves as a DNS server with A records mapping hostnames to IPs. Existing records include dc-1.mydomain.com (10.0.0.4) and client-1.mydomain.com (10.0.0.5), created automatically. When client-1 pings a hostname (e.g., "mainframe"), it checks its cache first, followed by the host file, and finally the DNS server. Client-1 first checks its local cache (stored in memory) for prior interactions with this computer, as it's the quickest method. If there's no result in the cache, it consults the host file for local domain name to IP address mappings. If that fails, it queries the DNS server over the network for the IP of "mainframe.com."
 <P>
