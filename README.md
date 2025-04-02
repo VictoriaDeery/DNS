@@ -20,7 +20,7 @@ In this lab, we will gain DNS familiarity using ping, A-Records, and CNAME using
 - Microsoft Azure (Virtual Machines/Compute)
 - Active Directory
 - Active Directory Users and Computers
-- 
+  
 <h2>Languages and Utilities Used</h2>
 
 - PowerShell
