@@ -53,9 +53,7 @@ If you later update the mainframe A record in the DNS server to point to a diffe
 <P>
  
 <h2>Objectives Tutorial:</h2>
-
  <p>
- <br />
 - <b>A. Inspect DNS A-records on the server (hostname to IP address mappings)</b>
 <p>
 <img src="https://github.com/user-attachments/assets/412f0e44-cf11-4ae9-87e0-3cf97abe8377" height="80%" width="80%"/>
